@@ -1,10 +1,13 @@
 
 import './App.css';
+import ResponsiveAppBar from './components/NavBar/NavBar.js';
 
 function App() {
   return (
+    
     <div className="App">
-      <h1>Sheipeg | Tu Tienda de</h1>
+      <ResponsiveAppBar />
+      <h1>Sheipeg | Tu Tienda de Fotografía</h1>
     </div>
   );
 }
