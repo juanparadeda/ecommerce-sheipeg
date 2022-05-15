@@ -1,0 +1,7 @@
+.cardItem {
+    display: flex;
+    flex-direction: column;
+    p {
+        min-height: 42px;
+    }
+}

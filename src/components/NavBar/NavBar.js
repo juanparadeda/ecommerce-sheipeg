@@ -11,12 +11,12 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import CartIconCustom from '../CartIconCustom/CartIconCustom';
 import './NavBar.scss';
+
 
 const pages = ['Productos', 'Cámaras', 'Lentes', 'Accesorios'];
 const settings = ['Mi Perfil', 'Mis Órdenes', 'Logout'];
-
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -35,14 +35,13 @@ const ResponsiveAppBar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
   return (
-    <AppBar position="static">
+    <AppBar className='NavBar' position="sticky">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-            <div className="logo">
-                <img src="./photologo.png" alt="Sheipeg logo"/>
-            </div>
+          <div className="logo">
+            <img src="./photologo.png" alt="Sheipeg logo" />
+          </div>
           <Typography
             variant="h6"
             noWrap
@@ -127,7 +126,7 @@ const ResponsiveAppBar = () => {
               </Button>
             ))}
           </Box>
-                <ShoppingCartIcon className="cartIcon" />
+          <CartIconCustom />
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
