@@ -1,7 +1,7 @@
 import './MainProduct.scss';
+import AddToCartBtn from '../AddToCartBtn/AddToCartBtn';
 
-
-const MainProduct = ({name , price, stock, image}) => {
+const MainProduct = ({ name, price, stock, image }) => {
     return (
         <>
             <h2>Producto Destacado</h2>
@@ -11,9 +11,9 @@ const MainProduct = ({name , price, stock, image}) => {
                 </div>
                 <div className='MainProductInfo'>
                     <h3>{name}</h3>
-                    <small>Stock: {stock}</small>
+                    <small>Stock: {stock} u.</small>
                     <h4>$ {price}</h4>
-                    <button>Agregar al carrito</button>
+                    <AddToCartBtn name={name} price={price} />
                 </div>
             </div>
         </>
