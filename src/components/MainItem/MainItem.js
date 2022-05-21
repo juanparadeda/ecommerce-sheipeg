@@ -1,13 +1,14 @@
-import './MainProduct.scss';
+import './MainItem.scss';
 import AddToCartBtn from '../AddToCartBtn/AddToCartBtn';
 
-const MainProduct = ({ name, price, stock, image }) => {
+const MainItem = ({prop}) => {
+    const {name, price, stock, image} = prop[0];
     return (
         <>
             <h2>Producto Destacado</h2>
             <div className="MainProduct">
                 <div className="MainProductImg">
-                    <img src={image} />
+                    <img src={image} alt={name}/>
                 </div>
                 <div className='MainProductInfo'>
                     <h3>{name}</h3>
@@ -20,4 +21,4 @@ const MainProduct = ({ name, price, stock, image }) => {
     )
 }
 
-export default MainProduct;
+export default MainItem;

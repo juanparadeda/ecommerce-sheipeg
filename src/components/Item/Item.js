@@ -1,10 +1,10 @@
 // Functional component
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import './Card.scss';
+import './Item.scss';
 import ItemCount from '../ItemCount/ItemCount';
 
-const CardItem = ({ product }) => {
+const Item = ({ product }) => {
     const { name, price, image, stock } = product;
     return (
         //JSX
@@ -22,4 +22,4 @@ const CardItem = ({ product }) => {
     )
 }
 
-export default CardItem;
+export default Item;

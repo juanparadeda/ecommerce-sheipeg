@@ -1,7 +1,7 @@
 
 import './App.css';
 import ResponsiveAppBar from './components/NavBar/NavBar.js';
-import MainPageProducts from './components/MainPageProducts/MainPageProducts.js';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const customTheme = createTheme({
@@ -23,7 +23,7 @@ function App() {
       <ThemeProvider theme={customTheme}>
         <ResponsiveAppBar />
         <h1>Sheipeg | Tu Tienda de Fotografía</h1>
-        <MainPageProducts />
+        <ItemListContainer />
         
       </ThemeProvider>
     </div>

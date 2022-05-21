@@ -11,7 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import CartIconCustom from '../CartIconCustom/CartIconCustom';
+import CartWidget from '../CartWidget/CartWidget';
 import './NavBar.scss';
 
 
@@ -126,7 +126,7 @@ const ResponsiveAppBar = () => {
               </Button>
             ))}
           </Box>
-          <CartIconCustom />
+          <CartWidget />
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

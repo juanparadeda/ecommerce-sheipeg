@@ -14,7 +14,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 let cart = [];
-const CartIconCustom = () => {
+const CartWidget = () => {
 
     return (
         <IconButton aria-label="cart" sx={{ margin: '0px 10px' }}>
@@ -26,4 +26,4 @@ const CartIconCustom = () => {
 
 }
 
-export default CartIconCustom;
+export default CartWidget;
