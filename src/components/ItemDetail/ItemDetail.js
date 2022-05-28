@@ -7,13 +7,11 @@ const ItemDetail = ({product}) => {
 const {image, name, price, stock, description} = product;
     return (
         <Container maxWidth='lg'>
-            
-            
             <Paper  variant="outlined">
             <h2>{name}</h2>
             <Grid container spacing={2} alignItems="center" justifyContent="space-evenly" flexWrap='wrap'>
                 <Grid item xs={8}>
-                    <img src={image} alt={name} />
+                    <img src={`../` + image} alt={name} />
                 </Grid>
                 <Grid >
                     <Paper elevation={4}>

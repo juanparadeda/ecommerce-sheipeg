@@ -1,31 +1,44 @@
 import { useEffect, useState } from "react";
-import { product } from '../../utils/productsMock.js';
+import { useParams } from "react-router-dom";
+import { products } from '../../utils/productsMock.js';
 import ItemDetail from '../ItemDetail/ItemDetail.js';
-
+import {filterProductById}from "../../utils/filterProduct.js";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner.js";
 
 const ItemDetailContainer = () => {
+    const { id } = useParams();
     const [productState, setProductState] = useState({});
+    const [displaySpinner, setDisplaySpinner] = useState({ display: 'flex' })
+
+
     const getProduct = () => {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                resolve(product);
+                resolve(filterProductById(products, id));
             }, 2000);
         });
     };
     useEffect(() => {
         getProduct()
-        .then((response) => {
-
-            setProductState(response);
-        })
-        .catch((error) => {
-            console.log('ERROR');
-        })
-
+            .then((response) => {
+                setProductState(response);
+            })
+            .catch((error) => {
+                console.log('ERROR');
+            })
+            .finally(() => {
+                setDisplaySpinner({display: 'none'})
+            })
     }, [])
 
     return (
-        <ItemDetail product={productState}/>
+        
+        <>
+            <LoadingSpinner display={displaySpinner} />
+            {productState.id != undefined && <ItemDetail product={productState} />}
+            
+            
+        </>
     )
 }
 

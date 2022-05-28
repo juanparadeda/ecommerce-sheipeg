@@ -13,11 +13,12 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import CartWidget from '../CartWidget/CartWidget';
 import './NavBar.scss';
+import { Link } from 'react-router-dom';
 
 
 const pages = ['Productos', 'Cámaras', 'Lentes', 'Accesorios'];
 const settings = ['Mi Perfil', 'Mis Órdenes', 'Logout'];
-const ResponsiveAppBar = () => {
+const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -39,28 +40,31 @@ const ResponsiveAppBar = () => {
     <AppBar className='NavBar' position="sticky">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <div className="logo">
-            <img src="./photologo.png" alt="Sheipeg logo" />
-          </div>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-              marginLeft: '15px'
-            }}
-          >
-            Sheipeg
-          </Typography>
-
+          <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/">
+            <div className="logo">
+              <img src="/photologo.png" alt="Sheipeg logo" />
+            </div>
+          </Link>
+          <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/">
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="/"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+                marginLeft: '15px'
+              }}
+            >
+              Sheipeg
+            </Typography>
+          </Link >
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -97,24 +101,6 @@ const ResponsiveAppBar = () => {
               ))}
             </Menu>
           </Box>
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
@@ -161,6 +147,6 @@ const ResponsiveAppBar = () => {
     </AppBar>
   );
 };
-export default ResponsiveAppBar;
+export default NavBar;
 
 

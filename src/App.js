@@ -1,9 +1,12 @@
 
 import './App.css';
-import ResponsiveAppBar from './components/NavBar/NavBar.js';
-import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import NavBar from './components/NavBar/NavBar.js';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import NotFound from './pages/NotFound';
+import ProductDetail from './pages/ProductDetail';
+
 const customTheme = createTheme({
   palette: {
     primary: {
@@ -21,11 +24,16 @@ function App() {
 
     <div className="App">
       <ThemeProvider theme={customTheme}>
-        <ResponsiveAppBar />
-        <h1>Sheipeg | Tu Tienda de Fotografía</h1>
-        <ItemDetailContainer />
-        <ItemListContainer />
-        
+        <BrowserRouter>
+          <NavBar />
+          <Routes>
+              <Route path='/product/:id' element={<ProductDetail />} />
+              <Route path='/' element={<Home />} />
+              <Route path='*' element={<NotFound />} />
+
+          </Routes>
+          
+        </BrowserRouter>
       </ThemeProvider>
     </div>
   );

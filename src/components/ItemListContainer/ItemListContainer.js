@@ -2,7 +2,7 @@ import MainItem from '../MainItem/MainItem.js';
 import ItemList from '../ItemList/ItemList.js';
 import { useState, useEffect } from 'react';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner.js';
-import products from '../../utils/productsMock.js';
+import { products } from '../../utils/productsMock.js';
 
 
 const ItemListContainer = () => {
@@ -13,7 +13,7 @@ const ItemListContainer = () => {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve(products);
-            }, 5000);
+            }, 1000);
         });
     };
 
