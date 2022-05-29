@@ -12,7 +12,7 @@ const Item = ({ product }) => {
         <Card>
             <CardContent>
                 <div className="cardItem">
-                    <Link style={{ textDecoration: 'none', color: 'inherit' }} to={`/product/${id}`}>
+                    <Link style={{ textDecoration: 'none', color: 'inherit' }} to={`/item/${id}`}>
                         <img src={`${image}`} alt={name} />
                     </Link>
                     <p>{name}</p>

@@ -1,44 +1,33 @@
-import MainItem from '../MainItem/MainItem.js';
-import ItemList from '../ItemList/ItemList.js';
-import { useState, useEffect } from 'react';
-import LoadingSpinner from '../LoadingSpinner/LoadingSpinner.js';
-import { products } from '../../utils/productsMock.js';
-
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom";
+import { filterProductsByCategory, getProducts } from "../../utils/productsMock";
+import ItemList from "../ItemList/ItemList";
 
 const ItemListContainer = () => {
     const [productsState, setProductsState] = useState([]);
-    const [displaySpinner, setDisplaySpinner] = useState({ display: 'flex' })
-
-    const getProducts = () => {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(products);
-            }, 1000);
-        });
-    };
+    const { category } = useParams();
+    let title = '';
+    (category == 'camaras') && (title = 'Cámaras de Fotos');
+    (category == 'lentes') && (title = 'Lentes');
+    (category == 'accesorio') && (title = 'Accesorios');
 
     useEffect(() => {
+        setProductsState([]);
         getProducts()
-            .then((res) => {
-                setProductsState(res);
-            })
-            .catch((err) => {
-                console.log('ERROR');
-            })
-            .finally(() => {
-                setDisplaySpinner({display: 'none'})
-            })
-    }, [])
-    return (
+        .then((res) =>{
+            const filteredProducts = filterProductsByCategory(res, category);
+            setProductsState(filteredProducts);
+        })
+        .then(() => console.log('hola'))
 
+    }, [category])
+    return (
         <>
+            <h1>{title}</h1>
             {/*productsState[0] != null && <MainItem prop={productsState[0]} />*/}
             <ItemList items={productsState} />
-            <LoadingSpinner display={displaySpinner}/>
         </>
     )
-
 }
-
 
 export default ItemListContainer;

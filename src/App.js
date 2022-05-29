@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import ProductDetail from './pages/ProductDetail';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 
 const customTheme = createTheme({
   palette: {
@@ -27,7 +28,8 @@ function App() {
         <BrowserRouter>
           <NavBar />
           <Routes>
-              <Route path='/product/:id' element={<ProductDetail />} />
+              <Route path='/item/:id' element={<ProductDetail />} />
+              <Route path='/categorias/:category' element={<ItemListContainer />} />
               <Route path='/' element={<Home />} />
               <Route path='*' element={<NotFound />} />
 

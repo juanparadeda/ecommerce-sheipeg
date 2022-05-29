@@ -4,8 +4,6 @@ import Item from '../Item/Item';
 
 const ItemList = ({ items }) => {
     return (
-        <>
-            <h2>Catálogo de Productos</h2>
             <Container>
                 <Grid container spacing={3}>
                     {
@@ -20,7 +18,6 @@ const ItemList = ({ items }) => {
                     }
                 </Grid>
             </Container>
-        </>
     )
 }
 

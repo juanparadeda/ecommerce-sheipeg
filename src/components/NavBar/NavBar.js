@@ -16,7 +16,7 @@ import './NavBar.scss';
 import { Link } from 'react-router-dom';
 
 
-const pages = ['Productos', 'Cámaras', 'Lentes', 'Accesorios'];
+const pages = ['Cámaras', 'Lentes', 'Accesorios'];
 const settings = ['Mi Perfil', 'Mis Órdenes', 'Logout'];
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -94,23 +94,50 @@ const NavBar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/categorias/camaras">
+                  <Typography textAlign="center">Cámaras</Typography>
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/categorias/lentes">
+                  <Typography textAlign="center">Lentes</Typography>
+                </Link>
+              </MenuItem>
+
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">Accesorios</Typography>
+              </MenuItem>
             </Menu>
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/categorias/camaras">
               <Button
-                key={page}
+
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                Cámaras
               </Button>
-            ))}
+            </Link>
+            <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/categorias/lentes">
+              <Button
+
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                Lentes
+              </Button>
+            </Link>
+            <Button
+
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: 'white', display: 'block' }}
+            >
+              Accesorios
+            </Button>
+
           </Box>
           <CartWidget />
           <Box sx={{ flexGrow: 0 }}>
@@ -144,7 +171,7 @@ const NavBar = () => {
           </Box>
         </Toolbar>
       </Container>
-    </AppBar>
+    </AppBar >
   );
 };
 export default NavBar;
