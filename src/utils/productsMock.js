@@ -108,6 +108,34 @@ const products = [
         stock: 3,
         image: '/fuji1655.webp',
     },
+    {
+        id: 13,
+        name: 'Trípode Manfrotto Befree Advanced',
+        category: 'accesorios',
+        description: 'Con una capacidad de carga de 8kg y un peso de tan solo 1.5kg, este trípode de viaje Befree avanzado negro de Manfrotto es una opción de soporte robusta que puede servir como un compañero de viaje conveniente tanto para fotógrafos profesionales como para aficionados apasionados',
+        price: 38900,
+        stock: 3,
+        image: '/manfrottobefree.jpg',
+    },
+    {
+        id: 14,
+        name: 'Pantalla Reflectora 5 en 1 80cm',
+        category: 'accesorios',
+        description: 'Lográ fotografías profesionales, con la versatilidad que te ofrece el reflector 5 en 1 de 80cm, sacá provecho del gran manejo de luz y sombras con sus 5 superficies: Oro, Plata, Blanco, Negro y Translúcido. Te permite una variedad de efectos: Difumina, absorbe, refleja o suaviza la luz a tu gusto. Elaborado con un resistente marco de acero flexible, que puede ser fácilmente doblado en un tamaño pequeño. Incluye una bolsa de transporte con cierre, para un fácil traslado. Elaborado con materiales resistentes e impermeables.',
+        price: 9000,
+        stock: 7,
+        image: '/5en1.jpg',
+    },
+    {
+        id: 15,
+        name: 'Gorilla Pod Joby 3Kg',
+        category: 'accesorios',
+        description: 'Kit de trípode ligero y nivelado. Diseñado para admitir cámaras reflex y mirroless o dispositivos que pesen hasta 3 kg. Con un cabezal panorámico de 360° y una inclinación de 90°, su kit GorillaPod 3K es imprescindible para cualquier fotógrafo, director de fotografía o vlogger. Los anillos de goma y las empuñaduras para los pies brindan mayor estabilidad en terrenos difíciles. Las patas envolventes le permiten asegurar el equipo de cámara profesional a prácticamente cualquier superficie. Funciona con accesorios de nivel profesional como GripTight PRO Mount',
+        price: 9800,
+        stock: 14,
+        image: '/jobygorilla.jpg',
+    },
+
 ]
 
 const getProducts = () => {
@@ -118,8 +146,4 @@ const getProducts = () => {
     });
 };
 
-const filterProductsByCategory = (arrayOfProducts, category) => {
-    return arrayOfProducts.filter((product) => product.category == category)
-}
-
-export {  products, getProducts, filterProductsByCategory };
+export {  products, getProducts };

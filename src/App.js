@@ -3,10 +3,9 @@ import './App.css';
 import NavBar from './components/NavBar/NavBar.js';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
 import NotFound from './pages/NotFound';
-import ProductDetail from './pages/ProductDetail';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 
 const customTheme = createTheme({
   palette: {
@@ -28,9 +27,9 @@ function App() {
         <BrowserRouter>
           <NavBar />
           <Routes>
-              <Route path='/item/:id' element={<ProductDetail />} />
+              <Route path='/item/:id' element={<ItemDetailContainer />} />
               <Route path='/categorias/:category' element={<ItemListContainer />} />
-              <Route path='/' element={<Home />} />
+              <Route path='/' element={<ItemListContainer />} />
               <Route path='*' element={<NotFound />} />
 
           </Routes>

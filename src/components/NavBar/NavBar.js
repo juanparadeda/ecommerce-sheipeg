@@ -107,7 +107,9 @@ const NavBar = () => {
               </MenuItem>
 
               <MenuItem onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">Accesorios</Typography>
+                <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/categorias/accesorios">
+                  <Typography textAlign="center">Accesorios</Typography>
+                </Link>
               </MenuItem>
             </Menu>
           </Box>
@@ -130,14 +132,15 @@ const NavBar = () => {
                 Lentes
               </Button>
             </Link>
-            <Button
+            <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/categorias/accesorios">
+              <Button
 
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: 'white', display: 'block' }}
-            >
-              Accesorios
-            </Button>
-
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                Accesorios
+              </Button>
+            </Link>
           </Box>
           <CartWidget />
           <Box sx={{ flexGrow: 0 }}>

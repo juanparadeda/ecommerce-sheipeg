@@ -15,7 +15,7 @@ const ItemDetailContainer = () => {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve(filterProductById(products, id));
-            }, 2000);
+            }, 500);
         });
     };
     useEffect(() => {
@@ -35,7 +35,7 @@ const ItemDetailContainer = () => {
         
         <>
             <LoadingSpinner display={displaySpinner} />
-            {productState.id != undefined && <ItemDetail product={productState} />}
+            {productState.id !== undefined && <ItemDetail product={productState} />}
             
             
         </>
