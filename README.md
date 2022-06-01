@@ -5,17 +5,17 @@ The purpose of the training is to apply the previously acquired knowledge of HTM
 
 ## Required dependancies to be installed
 
-### You will need node.js installed locally to be able to install further dependancies. You can download node.js for your OS from this website: https://nodejs.org/en/
+You will need node.js installed locally to be able to install further dependancies. You can download node.js for your OS from this website: https://nodejs.org/en/
 
-### Then you will need to create a react app by running `npx create-react-app your-directory`. your-directory is the directory (or folder, if you speak Windows, lol) where your react app will run
+Then you will need to create a react app by running `npx create-react-app your-directory`. your-directory is the directory (or folder, if you speak Windows, lol) where your react app will run
 
-### To get your app to run locally and get a preview of the app in your browser, first place yourself in your app directory `cd your-directory` and then run `npm start`
+To get your app to run locally and get a preview of the app in your browser, first place yourself in your app directory `cd your-directory` and then run `npm start`
 
-### After a while, a browser window should open up, on the url `http://localhost:3000`, showing the react logo rotating smoothly. For network access to your local app, other hosts in the network might browse to `http://192.168.0.137:3000`
+After a while, a browser window should open up, on the url `http://localhost:3000`, showing the react logo rotating smoothly. For network access to your local app, other hosts in the network might browse to `http://192.168.0.137:3000`
 
-### This project uses react-router-dom for link routing. You need to install this dependancy by typing `npm install react-router-dom`
+This project uses react-router-dom for link routing. You need to install this dependancy by typing `npm install react-router-dom`
 
-### This project uses Material UI component library. To install this library, type `npm install @mui/material @emotion/react @emotion/styled`. You will also need one additional package.json dependancy for the icons: `npm install @mui/icons-material`, 
+This project uses Material UI component library. To install this library, type `npm install @mui/material @emotion/react @emotion/styled`. You will also need one additional package.json dependancy for the icons: `npm install @mui/icons-material`, 
 
 # Getting Started with Create React App
 
