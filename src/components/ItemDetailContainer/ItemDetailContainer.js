@@ -8,7 +8,7 @@ import LoadingSpinner from "../LoadingSpinner/LoadingSpinner.js";
 const ItemDetailContainer = () => {
     const { id } = useParams();
     const [productState, setProductState] = useState({});
-    const [displaySpinner, setDisplaySpinner] = useState({ display: 'flex' })
+    /*const [displaySpinner, setDisplaySpinner] = useState({ display: 'flex' })*/
 
 
     const getProduct = () => {
@@ -26,16 +26,20 @@ const ItemDetailContainer = () => {
             .catch((error) => {
                 console.log('ERROR');
             })
-            .finally(() => {
+            /*.finally(() => {
                 setDisplaySpinner({display: 'none'})
-            })
+            })*/
     }, [])
 
     return (
         
-        <>
-            <LoadingSpinner display={displaySpinner} />
-            {productState.id !== undefined && <ItemDetail product={productState} />}
+        <>  
+            {productState.id === undefined ? 
+                <LoadingSpinner display={{ display: 'flex' }} />
+                :
+                <ItemDetail product={productState} />}
+            {/*productState.id === undefined && <LoadingSpinner display={{ display: 'flex' }} />*/}
+            {/*productState.id !== undefined && <ItemDetail product={productState} />*/}
             
             
         </>
