@@ -16,7 +16,6 @@ import './NavBar.scss';
 import { Link } from 'react-router-dom';
 
 
-const pages = ['Cámaras', 'Lentes', 'Accesorios'];
 const settings = ['Mi Perfil', 'Mis Órdenes', 'Logout'];
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -140,7 +139,7 @@ const NavBar = () => {
               </Button>
             </Link>
           </Box>
-          <CartWidget />
+          <Link to='/cart'><CartWidget /></Link>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

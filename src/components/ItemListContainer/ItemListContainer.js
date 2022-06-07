@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import { useParams } from "react-router-dom";
 import {  getProducts } from "../../utils/productsMock";
 import { filterProductsByCategory } from "../../utils/filterProduct";
@@ -9,6 +9,7 @@ const ItemListContainer = () => {
     const [productsState, setProductsState] = useState([]);
     const [SpinnerState, setSpinnerState] = useState({display: 'flex' })
     const { category } = useParams();
+
     let title = '';
     let subtitle = '';
     (category === 'camaras') && (title = 'Cámaras de Fotos');

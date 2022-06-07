@@ -3,19 +3,23 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import Modal from "../Modal/Modal";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 
 
 
-const AddToCartBtn = ({ name, price, count = 1, setShowButton = () => { } }) => { // El count = 1, está porque al llamar a este componente desde producto destacado, no se aclara la cantidad, entonces quiero que tome por defecto la cantidad 1.
-    const [open, setOpen] = useState(false)
+const AddToCartBtn = ({ product, count = 1, }) => { // El count = 1, está porque al llamar a este componente desde producto destacado, no se aclara la cantidad, entonces quiero que tome por defecto la cantidad 1.
+    const { addToCart } = useContext(CartContext);
+    const { name, price } = product;
+    const [open, setOpen] = useState(false);
     const handleClose = () => {
         setOpen(false)
     }
     return (
         <>
             <Button onClick={() => {
+                addToCart(product, count);
                 setOpen(true)
-                setShowButton(true)
             }
             }
                 size="small" variant="contained">

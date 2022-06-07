@@ -20,7 +20,7 @@ const ItemCount = ({product, setShowButton}) => {
             <Button size="small" variant="outlined" onClick={addCount}>+</Button>
             
         </div>
-        <AddToCartBtn setShowButton={setShowButton} name={name} price={price} count={count} />
+        <AddToCartBtn product={product} count={count} />
         </>
     );
 }
