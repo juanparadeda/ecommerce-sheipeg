@@ -9,15 +9,19 @@ const CartContextProvider = ({ children }) => {
     const isProductInCart = (product) => {
         return cart.find(cartProduct => cartProduct.id === product.id)
     }
-    const addItem = (product, qty) => {
+    const addItem = (product, qty, setOpen, setOpenFail) => {
         let productInCart = isProductInCart(product)
         if (productInCart == undefined && product.stock >= qty) {
             productInCart = { ...product, amountInCart: qty }
             setCart([...cart, productInCart])
             setProdsInCart(prodsInCart + qty)
+            setOpen(true)
         } else if (product.stock > (productInCart.amountInCart + qty)) {
             productInCart.amountInCart += qty;
             setProdsInCart(prodsInCart + qty)
+            setOpen(true)
+        } else {
+            setOpenFail(true)
         }
     }
     const removeItem = (id) => {
