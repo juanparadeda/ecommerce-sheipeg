@@ -9,7 +9,7 @@ import { CartContext } from "../../context/CartContext";
 
 
 const AddToCartBtn = ({ product, count = 1, }) => { // El count = 1, está porque al llamar a este componente desde producto destacado, no se aclara la cantidad, entonces quiero que tome por defecto la cantidad 1.
-    const { addToCart } = useContext(CartContext);
+    const { addItem } = useContext(CartContext);
     const { name, price } = product;
     const [open, setOpen] = useState(false);
     const handleClose = () => {
@@ -18,7 +18,7 @@ const AddToCartBtn = ({ product, count = 1, }) => { // El count = 1, está porqu
     return (
         <>
             <Button onClick={() => {
-                addToCart(product, count);
+                addItem(product, count);
                 setOpen(true)
             }
             }
@@ -30,7 +30,7 @@ const AddToCartBtn = ({ product, count = 1, }) => { // El count = 1, está porqu
                 <p>Agregaste {name} <strong>x{count}</strong> a tu carrito</p>
                 <p>Precio unitario $ {price}</p>
                 <p>Precio total <strong>x{count}</strong> $ {price * count}</p>
-                <Link to='/cart'>
+                <Link style={{ textDecoration: 'none', color: 'inherit' }} to='/cart'>
                     <Button color="secondary" variant="contained">
                         Confirmar y Pagar
                     </Button>
