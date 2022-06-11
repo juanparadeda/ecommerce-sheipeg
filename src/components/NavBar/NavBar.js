@@ -5,33 +5,24 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import CartWidget from '../CartWidget/CartWidget';
 import './NavBar.scss';
 import { Link } from 'react-router-dom';
-
+import HamburgerMenu from '../HamburgerMenu/HamburguerMenu';
+import DesktopNavButton from '../DesktopNavButton/DesktopNavButton';
+import Logo from '../Logo/Logo';
+import Brand from '../Brand/Brand';
 
 const settings = ['Mi Perfil', 'Mis Órdenes', 'Logout'];
 const NavBar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
@@ -39,105 +30,19 @@ const NavBar = () => {
     <AppBar className='NavBar' position="sticky">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/">
-            <div className="logo">
-              <img src="/photologo.png" alt="Sheipeg logo" />
-            </div>
-          </Link>
-          <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/">
-            <Typography
-              variant="h6"
-              noWrap
-              sx={{
-                mr: 2,
-                display: { xs: 'none', md: 'flex' },
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-                marginLeft: '15px'
-              }}
-            >
-              Sheipeg
-            </Typography>
-          </Link >
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/categorias/camaras">
-                  <Typography textAlign="center">Cámaras</Typography>
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/categorias/lentes">
-                  <Typography textAlign="center">Lentes</Typography>
-                </Link>
-              </MenuItem>
-
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/categorias/accesorios">
-                  <Typography textAlign="center">Accesorios</Typography>
-                </Link>
-              </MenuItem>
-            </Menu>
-          </Box>
+          <Logo />
+          <Brand />
+            <HamburgerMenu />
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/categorias/camaras">
-              <Button
-
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                Cámaras
-              </Button>
-            </Link>
-            <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/categorias/lentes">
-              <Button
-
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                Lentes
-              </Button>
-            </Link>
-            <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/categorias/accesorios">
-              <Button
-
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                Accesorios
-              </Button>
-            </Link>
+            <DesktopNavButton link={'/categorias/camaras'}>
+              Cámaras
+            </DesktopNavButton>
+            <DesktopNavButton link={'/categorias/lentes'}>
+              Lentes
+            </DesktopNavButton>
+            <DesktopNavButton link={'/categorias/accesorios'}>
+              Accesorios
+            </DesktopNavButton>
           </Box>
           <Link to='/cart'><CartWidget /></Link>
           <Box sx={{ flexGrow: 0 }}>
