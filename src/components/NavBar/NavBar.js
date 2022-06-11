@@ -11,10 +11,11 @@ import DesktopNavButton from '../DesktopNavButton/DesktopNavButton';
 import Logo from '../Logo/Logo';
 import Brand from '../Brand/Brand';
 import UserMenu from '../UserMenu/UserMenu';
-
+import { useContext } from 'react';
+import { CartContext } from '../../context/CartContext';
 
 const NavBar = () => {
-
+  const {prodsInCart} = useContext(CartContext)
   return (
     <AppBar className='NavBar' position="sticky">
       <Container maxWidth="xl">
@@ -33,7 +34,7 @@ const NavBar = () => {
               Accesorios
             </DesktopNavButton>
           </Box>
-          <Link to='/cart'><CartWidget /></Link>
+          {(prodsInCart > 0) && (<Link to='/cart'><CartWidget /></Link>)}
           <UserMenu />
         </Toolbar>
       </Container>

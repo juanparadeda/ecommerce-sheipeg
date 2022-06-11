@@ -18,16 +18,12 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 const CartWidget = () => {
     const {prodsInCart} = useContext(CartContext)
     return (
-        <>
-        {(prodsInCart > 0) && 
         <IconButton aria-label="cart" sx={{ margin: '0px 10px' }}>
             <StyledBadge badgeContent={`${prodsInCart}`} color="secondary">
                 <ShoppingCartIcon color="secondary" />
             </StyledBadge>
-        </IconButton>}
-        </>
+        </IconButton>
     )
-
 }
 
 export default CartWidget;
