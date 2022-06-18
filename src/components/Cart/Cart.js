@@ -16,6 +16,7 @@ import Modal from "../Modal/Modal";
 import { addDoc, collection } from 'firebase/firestore';
 import db from "../../utils/firebaseConfig";
 import { useNavigate } from "react-router-dom";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -44,6 +45,7 @@ const Cart = () => {
     const { cart, removeItem, clear, prodsInCart } = useContext(CartContext)
     const [open, setOpen] = useState(false);
     const [orderSubmitted, setOrderSubmitted] = useState('')
+    const [spinnerState, setSpinnerState] = useState({display: 'none'})
 
     const cartPrice = cart.reduce((acc, current) => {
         return acc + current.price * current.amountInCart
@@ -69,7 +71,7 @@ const Cart = () => {
         if (orderSubmitted) {
             
             clear();
-            navigate('/');
+            navigate('/ordenes');
         } 
         setOpen(false)
     }
@@ -81,6 +83,7 @@ const Cart = () => {
     }
     const endPurchase = (e) => {
         e.preventDefault();
+        setSpinnerState({display: 'flex'})
         const time = new Date().toLocaleString({ dateStyle: 'full', timeStyle: 'long', hour12: 'true' })
         setOrder({ ...order, buyer: formValue, time: time })
         saveOrderInFirestore({ ...order, buyer: formValue, time: time })
@@ -169,6 +172,7 @@ const Cart = () => {
                         onChange={formInput}
                     />
                     <Button type='submit' onClick={endPurchase} variant='contained' size='large' color='secondary'>FINALIZAR COMPRA</Button>
+                    <LoadingSpinner display={spinnerState} />
                 </Box> </>) : (<>
             
             
