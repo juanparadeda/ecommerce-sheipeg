@@ -33,6 +33,9 @@ const NavBar = () => {
             <DesktopNavButton link={'/categorias/accesorios'}>
               Accesorios
             </DesktopNavButton>
+            <DesktopNavButton link={'/ordenes'}>
+              Mis Órdenes
+            </DesktopNavButton>
           </Box>
           {(prodsInCart > 0) && (<Link to='/cart'><CartWidget /></Link>)}
           <UserMenu />
