@@ -1,31 +1,23 @@
+// React and react-router-dom imports
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+// Site components imports
 import ItemDetail from '../ItemDetail/ItemDetail.js';
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner.js";
-import { doc, getDoc } from "firebase/firestore";
-import db from "../../utils/firebaseConfig";
+// Firebase imports
+import { getProductFromFirebase } from "../../utils/fireBaseController.js";
 
 const ItemDetailContainer = () => {
     const { id } = useParams();
     const [productState, setProductState] = useState({});
 
     useEffect(() => {
-        const getProductFromFirebase = async () =>{
-            const docRef = doc(db, 'products', id);
-            const docSnap = await getDoc(docRef);
-            if (docSnap.exists()) {
-                let product = docSnap.data();
-                product.id = docSnap.id;
-                return(product);
-            }
-        }
-        getProductFromFirebase()
+        getProductFromFirebase(id)
         .then((res) => {
             setProductState(res);
         })
     }, [])
     return (
-        
         <>  
             {productState.id === undefined ? 
                 <LoadingSpinner display={{ display: 'flex' }} />

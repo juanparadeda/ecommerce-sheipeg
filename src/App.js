@@ -1,8 +1,10 @@
-
+// React and React router imports
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// MUI imports
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+// Site components imports
 import './App.css';
 import NavBar from './components/NavBar/NavBar.js';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NotFound from './pages/NotFound';
 import CartContainer from './components/CartContainer/CartContainer';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';

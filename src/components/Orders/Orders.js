@@ -4,7 +4,7 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableHead from '@mui/material/TableHead';
+import TablesHead from "../TablesHead/TablesHead";
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
@@ -31,19 +31,12 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 
 const Orders = ({orders}) => {
-
+    const columns = ['Día y hora', 'Orden', 'Cantidad de Productos', 'Precio Total']
     return (
         <Container>
                 <TableContainer sx={{ maxWidth: 1027 }} component={Paper}>
                     <Table sx={{ minWidth: 200 }} aria-label="customized table">
-                        <TableHead>
-                            <TableRow>
-                                <StyledTableCell>Día y hora</StyledTableCell>
-                                <StyledTableCell align="right">Orden</StyledTableCell>
-                                <StyledTableCell align="right">Cantidad de Productos</StyledTableCell>
-                                <StyledTableCell align="right">Precio total</StyledTableCell>
-                            </TableRow>
-                        </TableHead>
+                        <TablesHead columns={columns} />
                         <TableBody>
                             {orders.map((order) => {
                                 const { id, time, prodsInCart, total } = order;

@@ -1,9 +1,11 @@
+// React and react-router-dom Imports
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
+// Site components imports
 import ItemList from "../ItemList/ItemList";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
-import { collection, doc, getDocs, query, where, getDoc } from "firebase/firestore";
-import db from "../../utils/firebaseConfig";
+// Firebase imports
+import { getProductsCategory, getProductsFromFireStore } from "../../utils/fireBaseController";
 
 const ItemListContainer = () => {
     const [productsState, setProductsState] = useState([]);
@@ -41,26 +43,6 @@ const ItemListContainer = () => {
         }
     }, [category])
 
-    const getProductsFromFireStore = async () => {
-        const productSnapshot = await getDocs(collection(db, 'products'));
-        const productList = productSnapshot.docs.map((doc) => {
-            let product = doc.data();
-            product.id = doc.id;
-            return product;
-        })
-        
-        return (productList);
-    }
-    const getProductsCategory = async (category) => {
-        const q = query(collection(db, 'products'), where ('category', '==', category))
-        const categorySnapshot = await getDocs(q)
-        const categoryList = categorySnapshot.docs.map((doc) => {
-            let product = doc.data();
-            product.id = doc.id;
-            return product;
-        })
-        return categoryList;
-    }
     return (
         <>
             <h1>{title}</h1>

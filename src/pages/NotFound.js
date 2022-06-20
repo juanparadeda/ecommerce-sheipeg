@@ -12,7 +12,7 @@ const NotFound = () => {
                 </Button>
             </Link>
             <Container maxWidth='sm' >
-                <img src="/brokencamera.jpg" />
+                <img src="/brokencamera.jpg" alt='Broken Camera'/>
             </Container>
 
         </>
