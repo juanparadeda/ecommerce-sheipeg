@@ -1,3 +1,4 @@
+// React and react router imports
 import { Link } from "react-router-dom";
 
 const Logo = () => {

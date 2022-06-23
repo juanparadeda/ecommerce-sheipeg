@@ -1,6 +1,5 @@
 // React imports
 import { useContext } from 'react';
-
 // MUI imports
 import TableBody from '@mui/material/TableBody';
 import DeleteIcon from '@mui/icons-material/Delete';

@@ -1,9 +1,11 @@
-
+// React imports
+import { useContext } from 'react';
+// MUI imports
 import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { useContext } from 'react';
+// Site components imports
 import { CartContext } from '../../context/CartContext';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({

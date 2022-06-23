@@ -1,5 +1,8 @@
+// React router imports
 import { Link } from "react-router-dom"
+// MUI imports
 import { Button } from "@mui/material"
+
 const DesktopNavButton = ({children, link}) =>{
     return(
         <Link style={{ textDecoration: 'none', color: 'inherit' }} to={link}>

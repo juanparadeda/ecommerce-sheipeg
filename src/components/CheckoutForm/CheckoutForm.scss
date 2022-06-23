@@ -1,0 +1,13 @@
+form {
+    display: flex; 
+    flex-direction: column; 
+    row-gap: 15px;
+}
+.formField {
+    width: 100%;
+}
+.formBox {
+    small {
+        color: red;
+    }
+}

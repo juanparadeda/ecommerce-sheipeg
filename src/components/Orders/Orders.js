@@ -1,12 +1,14 @@
+// MUI imports
 import { Container } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TablesHead from "../TablesHead/TablesHead";
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+// Site components imports
+import TablesHead from "../TablesHead/TablesHead";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {

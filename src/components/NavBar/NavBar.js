@@ -1,17 +1,20 @@
+// React and react router imports
 import * as React from 'react';
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+// MUI imports
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
+// Site components imports
 import CartWidget from '../CartWidget/CartWidget';
 import './NavBar.scss';
-import { Link } from 'react-router-dom';
 import HamburgerMenu from '../HamburgerMenu/HamburguerMenu';
 import DesktopNavButton from '../DesktopNavButton/DesktopNavButton';
 import Logo from '../Logo/Logo';
 import Brand from '../Brand/Brand';
 import UserMenu from '../UserMenu/UserMenu';
-import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 
 const NavBar = () => {

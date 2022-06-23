@@ -1,4 +1,6 @@
+// React router imports
 import { Link } from "react-router-dom"
+// MUI imports
 import { Typography } from "@mui/material";
 
 const Brand = () => {

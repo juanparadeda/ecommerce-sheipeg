@@ -1,14 +1,18 @@
 // React imports
 import { useState, useContext } from "react"
+// react-hook-form validation import
+import { useForm } from "react-hook-form"
 // MUI imports
-import { TextField, Button } from "@mui/material"
+import { TextField, Button, Container, Box } from "@mui/material"
 // Site components imports
 import { CartContext } from "../../context/CartContext"
+import './CheckoutForm.scss'
 // Firebase imports
-import { saveOrderInFirestore } from "../../utils/fireBaseController"
+import { saveOrderInFirestore, updateStockinFirestore } from "../../utils/fireBaseController"
 
 
-const CheckoutForm = ({setOrderSubmitted, setSpinnerState}) => {
+const CheckoutForm = ({ setOrderSubmitted, setSpinnerState }) => {
+    const { register, handleSubmit, formState: { errors } } = useForm()
     const { cart, prodsInCart, cartPrice } = useContext(CartContext)
     const [formValue, setFormValue] = useState({ name: '', phone: '', email: '' })
     const [order, setOrder] = useState({
@@ -23,44 +27,75 @@ const CheckoutForm = ({setOrderSubmitted, setSpinnerState}) => {
         }),
         total: cartPrice,
         time: '',
-        prodsInCart: prodsInCart 
+        prodsInCart: prodsInCart
     })
     const formInput = (e) => {
         e.preventDefault();
         setFormValue({ ...formValue, [e.target.name]: e.target.value })
     }
-    const endPurchase = (e) => {
-        e.preventDefault();
+    const endPurchase = () => {
+        //e.preventDefault();
         setSpinnerState({ display: 'flex' })
         const time = new Date().toLocaleString({ dateStyle: 'full', timeStyle: 'long', hour12: 'true' })
         setOrder({ ...order, buyer: formValue, time: time })
         saveOrderInFirestore({ ...order, buyer: formValue, time: time }, setOrderSubmitted)
     }
+
     return (
-        <>
-            <TextField
-                label="Nombre y apellido"
-                name='name'
-                id="outlined-size-small"
-                size="small"
-                onChange={formInput}
-            />
-            <TextField
-                label="e-mail"
-                name='email'
-                id="outlined-size-small"
-                size="small"
-                onChange={formInput}
-            />
-            <TextField
-                label="Teléfono"
-                name='phone'
-                id="outlined-size-small"
-                size="small"
-                onChange={formInput}
-            />
-            <Button type='submit' onClick={endPurchase} variant='contained' size='large' color='secondary'>FINALIZAR COMPRA</Button>
-        </>
+        <form onSubmit={handleSubmit(endPurchase)}>
+            <Box className="formBox">
+                <TextField className="formField"
+                    label="Nombre y apellido"
+                    name='name'
+                    id="outlined-size-small"
+                    size="small"
+                    type='text'
+                    {...register('name', {
+                        required: true,
+                        minLength: 3
+                    })}
+                    onChange={formInput}
+                />
+                {errors.name?.type == 'required' && <small>El campo es requerido</small>}
+                {errors.name?.type == 'minLength' && <small>Mínimo 3 caracteres</small>}
+            </Box>
+            <Box className="formBox">
+                <TextField className="formField"
+                    label="e-mail"
+                    name='email'
+                    id="outlined-size-small"
+                    size="small"
+                    type='text'
+                    {...register('email', {
+                        required: true,
+                        pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
+                    })}
+                    onChange={formInput}
+                />
+                {errors.email?.type == 'required' && <small>El campo es requerido</small>}
+                {errors.email?.type == 'pattern' && <small>Formato requerido: usuario@servidor.com</small>}
+            </Box>
+            <Box className="formBox">
+                <TextField className="formField"
+                    label="Teléfono"
+                    name='phone'
+                    id="outlined-size-small"
+                    size="small"
+                    type='text'
+                    {...register('phone', {
+                        required: true,
+                        pattern: /^[0-9]*$/,
+                        minLength: 7
+                    })}
+                    onChange={formInput}
+                />
+                {errors.phone?.type == 'required' && <small>El campo es requerido</small>}
+                {errors.phone?.type == 'minLength' && <small>Ingresar número completo, incluyendo código de área. Código de área para CABA: 5411</small>}
+                {errors.phone?.type == 'pattern' && <small>Ingresar sólo números</small>}
+            </Box>
+            <Button type='submit' variant='contained' size='large' color='secondary'>FINALIZAR COMPRA</Button>
+            <Button onClick={() => updateStockinFirestore(order)}>Test update stock</Button>
+        </ form>
     )
 }
 

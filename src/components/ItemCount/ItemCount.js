@@ -1,7 +1,9 @@
+
+
 import { Button } from "@mui/material";
 import './ItemCount.scss';
 import { useState } from 'react';
-import AddToCartBtn from '../../components/AddToCartBtn/AddToCartBtn.js'
+import AddToCartBtn from '../../components/AddToCartBtn/AddToCartBtn'
 
 const ItemCount = ({product, setShowButton}) => {
     const { name, price, stock } = product;

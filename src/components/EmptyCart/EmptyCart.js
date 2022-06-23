@@ -1,5 +1,6 @@
-
+// React router imports
 import { Link } from "react-router-dom";
+// Site components imports
 import { Button } from "@mui/material";
 
 const EmptyCart = () => {

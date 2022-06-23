@@ -1,5 +1,7 @@
+// MUI imports
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+// Site components imports
 import './LoadingSpinner.scss';
 
 const LoadingSpinner = ({display}) => {

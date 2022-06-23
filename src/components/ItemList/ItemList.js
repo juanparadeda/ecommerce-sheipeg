@@ -1,5 +1,7 @@
+// MUI imports
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+// Site components imports
 import Item from '../Item/Item';
 
 const ItemList = ({ items }) => {

@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, getDocs,  query, where, getDoc } from 'firebase/firestore';
+import { addDoc, collection, doc, getDocs,  query, where, getDoc, updateDoc, increment } from 'firebase/firestore';
 import db from "./firebaseConfig";
 
 
@@ -27,8 +27,12 @@ const getProductsCategory = async (category) => {
 const saveOrderInFirestore = async (orderToSave, setOrderSubmitted) => {
     const orderFirestore = collection(db, 'orders')
     const orderDocument = await addDoc(orderFirestore, orderToSave)
+    updateStockinFirestore(orderToSave)
     setOrderSubmitted(orderDocument.id)
 }
+
+
+
 const getProductFromFirebase = async (id) =>{
     const docRef = doc(db, 'products', id);
     const docSnap = await getDoc(docRef);
@@ -38,4 +42,14 @@ const getProductFromFirebase = async (id) =>{
         return(product);
     }
 }
-export {saveOrderInFirestore, getProductsFromFireStore, getProductsCategory, getProductFromFirebase}
+
+const updateStockinFirestore = async (order) => {
+    console.log(order.items)
+    order.items.map((item) => {
+        const productToUpdate = doc(db, 'products', item.id)
+        updateDoc(productToUpdate, { stock: increment(-(item.amountInCart))})
+
+    })
+
+}
+export {saveOrderInFirestore, getProductsFromFireStore, getProductsCategory, getProductFromFirebase, updateStockinFirestore}

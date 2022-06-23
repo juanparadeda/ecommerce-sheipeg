@@ -1,4 +1,6 @@
+// React imports
 import { useContext } from "react";
+// Site components imports
 import { CartContext } from "../../context/CartContext";
 import Cart from "../Cart/Cart";
 import EmptyCart from "../EmptyCart/EmptyCart";

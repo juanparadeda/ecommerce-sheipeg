@@ -30,7 +30,7 @@ const CheckoutButton = () => {
                     <>
                         <h1>Confirmación de Compra</h1>
                         <h2>Total a Pagar: $ {cartPrice}</h2>
-                        <Box display='flex' flexDirection='column' rowGap='15px'>
+                        <Box>
                             <CheckoutForm setOrderSubmitted={setOrderSubmitted} setSpinnerState={setSpinnerState} />
                             <LoadingSpinner display={spinnerState} />
                         </Box>

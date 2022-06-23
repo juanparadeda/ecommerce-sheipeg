@@ -1,6 +1,9 @@
+// React imports
 import * as React from 'react';
-import ItemCount from '../ItemCount/ItemCount';
+// MUI imports
 import { Container, Divider, Grid, Paper, Typography } from '@mui/material';
+// Site components imports
+import ItemCount from '../ItemCount/ItemCount';
 import './ItemDetail.scss';
 
 const ItemDetail = ({ product }) => {

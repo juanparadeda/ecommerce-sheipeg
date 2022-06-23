@@ -1,4 +1,6 @@
+// React imports
 import * as React from 'react';
+// MUI imports
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
