@@ -48,7 +48,7 @@ const updateStockinFirestore = async (order) => {
     order.items.map((item) => {
         const productToUpdate = doc(db, 'products', item.id)
         updateDoc(productToUpdate, { stock: increment(-(item.amountInCart))})
-
+        return true
     })
 
 }

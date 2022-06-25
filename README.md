@@ -17,7 +17,7 @@ This project uses react-router-dom for link routing. You need to install this de
 
 This project uses Material UI component library. To install this library, type `npm install @mui/material @emotion/react @emotion/styled`. You will also need one additional package.json dependancy for the icons: `npm install @mui/icons-material`.
 
-A .gif file showing the navegability of the site has been added to the root directory of this project `/Juan-Paradeda-eCommerce.gif`
+This project uses react-hook-form for data input validation. To install this dependancy with npm: `npm install react-hook-form`.
 
 
 # Getting Started with Create React App

@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 // Site components imports
 import ItemList from "../ItemList/ItemList";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import Carousel from "../Carousel/Carousel";
+import './itemListContainer.scss';
 // Firebase imports
 import { getProductsCategory, getProductsFromFireStore } from "../../utils/fireBaseController";
 
@@ -44,7 +46,8 @@ const ItemListContainer = () => {
     }, [category])
 
     return (
-        <>
+        <>  
+            <Carousel />
             <h1>{title}</h1>
             <h2>{subtitle}</h2>
             <LoadingSpinner display={SpinnerState} />
