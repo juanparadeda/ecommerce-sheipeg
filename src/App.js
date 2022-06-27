@@ -11,7 +11,7 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import { CartContextProvider } from './context/CartContext';
 import OrdersContainer from './components/OrdersContainer/OrdersContainer';
-import Carousel from './components/Carousel/Carousel';
+import FilterContainer from './components/FilterContainer/FilterContainer';
 
 const customTheme = createTheme({
   palette: {
@@ -34,7 +34,7 @@ function App() {
           <BrowserRouter>
             <NavBar />
             <Routes>
-              <Route path='/carousel' element={<Carousel />} />
+              <Route path='/filter' element={<FilterContainer />} />
               <Route path='/item/:id' element={<ItemDetailContainer />}  />
               <Route path='/categorias/:category' element={<ItemListContainer />} />
               <Route path='/ordenes' element={<OrdersContainer />}/>

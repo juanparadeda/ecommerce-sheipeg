@@ -1,27 +1,36 @@
-import { addDoc, collection, doc, getDocs,  query, where, getDoc, updateDoc, increment } from 'firebase/firestore';
+import { addDoc, collection, doc, getDocs, query, where, getDoc, updateDoc, increment } from 'firebase/firestore';
 import db from "./firebaseConfig";
 
-
+const processProdIdfromSnapshot = (snapshot) => {
+    const list = snapshot.docs.map((doc) =>{
+        let element = doc.data()
+        element.id = doc.id
+        return element
+    })
+    return list
+}
 
 const getProductsFromFireStore = async () => {
-    const productSnapshot = await getDocs(collection(db, 'products'));
-    const productList = productSnapshot.docs.map((doc) => {
-        let product = doc.data();
-        product.id = doc.id;
-        return product;
-    })
-    
+    const productSnapshot = await getDocs(collection(db, 'products'))
+    const productList = processProdIdfromSnapshot(productSnapshot)
     return (productList);
 }
 const getProductsCategory = async (category) => {
-    const q = query(collection(db, 'products'), where ('category', '==', category))
+    const q = query(collection(db, 'products'), where('category', '==', category))
     const categorySnapshot = await getDocs(q)
-    const categoryList = categorySnapshot.docs.map((doc) => {
-        let product = doc.data();
-        product.id = doc.id;
-        return product;
-    })
+    const categoryList = processProdIdfromSnapshot(categorySnapshot)
     return categoryList;
+}
+
+const filterProducts = async (filters) => {
+    const queryConditions = filters.map((filter) => {
+        return (where(filter.property, filter.operator, filter.value))
+    })
+    const q = query(collection(db, 'products'),
+        ...queryConditions)
+    const filterSnapshot = await getDocs(q)
+    const filterList = processProdIdfromSnapshot(filterSnapshot)
+    return (filterList)
 }
 
 const saveOrderInFirestore = async (orderToSave, setOrderSubmitted) => {
@@ -33,13 +42,13 @@ const saveOrderInFirestore = async (orderToSave, setOrderSubmitted) => {
 
 
 
-const getProductFromFirebase = async (id) =>{
+const getProductFromFirebase = async (id) => {
     const docRef = doc(db, 'products', id);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
         let product = docSnap.data();
         product.id = docSnap.id;
-        return(product);
+        return (product);
     }
 }
 
@@ -47,9 +56,11 @@ const updateStockinFirestore = async (order) => {
     console.log(order.items)
     order.items.map((item) => {
         const productToUpdate = doc(db, 'products', item.id)
-        updateDoc(productToUpdate, { stock: increment(-(item.amountInCart))})
+        updateDoc(productToUpdate, { stock: increment(-(item.amountInCart)) })
         return true
     })
-
 }
-export {saveOrderInFirestore, getProductsFromFireStore, getProductsCategory, getProductFromFirebase, updateStockinFirestore}
+
+
+
+export { saveOrderInFirestore, getProductsFromFireStore, getProductsCategory, getProductFromFirebase, updateStockinFirestore, filterProducts }

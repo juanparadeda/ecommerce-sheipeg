@@ -1,13 +1,19 @@
 // React and react-router-dom Imports
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
+// MUI imports
+import FilterListIcon from '@mui/icons-material/FilterList';
+import { Button } from "@mui/material";
 // Site components imports
 import ItemList from "../ItemList/ItemList";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import Carousel from "../Carousel/Carousel";
+import FilterContainer from "../FilterContainer/FilterContainer";
 import './itemListContainer.scss';
 // Firebase imports
 import { getProductsCategory, getProductsFromFireStore } from "../../utils/fireBaseController";
+
+
 
 const ItemListContainer = () => {
     const [productsState, setProductsState] = useState([]);
@@ -47,7 +53,7 @@ const ItemListContainer = () => {
 
     return (
         <>  
-            <Carousel />
+            {category === undefined && <Carousel />}
             <h1>{title}</h1>
             <h2>{subtitle}</h2>
             <LoadingSpinner display={SpinnerState} />
