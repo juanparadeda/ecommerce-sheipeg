@@ -94,7 +94,6 @@ const CheckoutForm = ({ setOrderSubmitted, setSpinnerState }) => {
                 {errors.phone?.type == 'pattern' && <small>Ingresar sólo números</small>}
             </Box>
             <Button type='submit' variant='contained' size='large' color='secondary'>FINALIZAR COMPRA</Button>
-            <Button onClick={() => updateStockinFirestore(order)}>Test update stock</Button>
         </ form>
     )
 }

@@ -1,7 +1,11 @@
-h1 {
-    font-size: 62px;
-}
-
-h2 {
-    font-size: 40px;
+.filter {
+    display: flex;
+    flex-direction: row;
+    position: sticky;
+    top: 100px;
+    margin: 40px auto;
+    max-width: 1255px;
+    button {
+        margin-left: 20px;
+    }
 }

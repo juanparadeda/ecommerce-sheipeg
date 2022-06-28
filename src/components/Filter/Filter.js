@@ -1,34 +1,36 @@
 // React imports
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 // MUI imports
 import { Button, Menu, FormGroup, FormControlLabel, Checkbox } from "@mui/material"
 import FilterListIcon from '@mui/icons-material/FilterList';
 import ItemList from "../ItemList/ItemList";
+
 // Site components imports
-import filterList from "../../utils/filterList";
-import Carousel from "../Carousel/Carousel";
-import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import filterList from "../../utils/filterList"
 // Firestore imports
 import { filterProducts } from "../../utils/fireBaseController";
 
-
-
-
-const FilterContainer = () => {
+const Filter = ({setProductsState, setSpinnerState}) => {
     const { category } = useParams()
-
-    
-    let title = '';
-    let subtitle = '';
-    (category === 'camaras') && (title = 'Cámaras de Fotos');
-    (category === 'lentes') && (title = 'Lentes');
-    (category === 'accesorios') && (title = 'Accesorios');
-    (category === undefined) && (title = 'Sheipeg | Tu Tienda de Fotografía') && (subtitle = 'Catálogo de Productos')
-    const [SpinnerState, setSpinnerState] = useState({ display: 'flex' })
-    const [productsState, setProductsState] = useState([])
-    const [anchorEl, setAnchorEl] = useState(null);
+    const [anchorEl, setAnchorEl] = useState(null)
     const [filters, setFilters] = useState([])
+
+    const filterDisabled = (group, name) => {
+        let returnValue = false
+        filters.forEach((element) => {
+            (element.property == group && element.value != name) && (returnValue = true)
+        })
+        return returnValue
+    }
+    const filterChecked = (group, name) => {
+        let returnValue = false
+        filters.forEach((element) => {
+            (element.property == group && element.value == name) && (returnValue = true)
+        })
+        return returnValue
+    }
+
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -48,43 +50,28 @@ const FilterContainer = () => {
                 operator: operator,
                 value: name
             }])
-            filterDisablingControl(group, name)
-        } else {
-            enableFilterGroup(group)
+        }
+        else {
             const newFilters = filters.filter((element) => group != element.property)
             setFilters(newFilters)
         }
     }
-
-    const filterDisablingControl = (checkedGroup, checkedName) => {
-        filterList.map((group) => {
-            (group.group == checkedGroup) && group.groupArray.map((brand) => {
-                (brand.name != checkedName) && (brand.disabled = true)
-            })
-        })
-    }
-
-    const enableFilterGroup = (group) => {
-        filterList.map((element) => {
-            (element.group == group) && element.groupArray.map((subElement) => subElement.disabled = false)
-        })
-    }
     useEffect(() => {
-
-        if (category) {
+        setProductsState([])
+        setSpinnerState({ display: 'flex' })
+        if (category != undefined) {
             const categoryFilter = {
                 property: 'category',
                 operator: '==',
                 value: category
             }
             setFilters([categoryFilter])
-        }
-        
+        } else setFilters([])
     }, [category])
-
 
     useEffect(() => {
         setProductsState([])
+        setSpinnerState({ display: 'flex' })
         filterProducts(filters)
             .then((res) => {
                 setProductsState(res)
@@ -96,9 +83,6 @@ const FilterContainer = () => {
 
     return (
         <>
-            {category === undefined && <Carousel />}
-            <h1>{title}</h1>
-            <h2>{subtitle}</h2>
             <Button
                 onClick={handleClick}
                 variant='contained'
@@ -124,18 +108,17 @@ const FilterContainer = () => {
                     return (<FormGroup id={group.group} key={index}>
                         <p style={{ marginLeft: '5px' }}><strong>{group.groupLabel}</strong></p>
                         {group.groupArray.map((subElement, index) => {
-                            const { disabled, name, label } = subElement
-                            return (<FormControlLabel key={index} disabled={disabled} onChange={handleFilter} sx={{ marginLeft: '5px' }} control={<Checkbox />} label={label} name={name} />)
+
+                            const { name, label } = subElement
+                            return (<FormControlLabel key={index} onChange={handleFilter} sx={{ marginLeft: '5px' }} control={<Checkbox checked={filterChecked(group.group, name)} />} label={label} name={name} disabled={filterDisabled(group.group, name)} />)
+
                         })}
                     </FormGroup>)
                 })}
 
             </Menu>
-            <LoadingSpinner display={SpinnerState} />
-            <ItemList items={productsState} />
-
         </>
     )
 }
 
-export default FilterContainer
+export default Filter
