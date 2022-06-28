@@ -1,41 +1,35 @@
 // React imports
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 // MUI imports
 import { Button, Menu, FormGroup, FormControlLabel, Checkbox } from "@mui/material"
 import FilterListIcon from '@mui/icons-material/FilterList';
 import ItemList from "../ItemList/ItemList";
+// Site components imports
+import filterList from "../../utils/filterList";
+import Carousel from "../Carousel/Carousel";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 // Firestore imports
 import { filterProducts } from "../../utils/fireBaseController";
 
 
-const filterList = [{
-    group: 'brand',
-    groupLabel: 'Marcas',
-    groupArray: [
-        {
-            label: 'Nikon',
-            name: 'nikon',
-            disabled: false
-        },
-        {
-            label: 'Canon',
-            name: 'canon',
-            disabled: false
-        },
-        {
-            label: 'Fujifilm',
-            name: 'fuji',
-            disabled: false
-        }
-    ]
-}]
+
 
 const FilterContainer = () => {
+    const { category } = useParams()
+
+    
+    let title = '';
+    let subtitle = '';
+    (category === 'camaras') && (title = 'Cámaras de Fotos');
+    (category === 'lentes') && (title = 'Lentes');
+    (category === 'accesorios') && (title = 'Accesorios');
+    (category === undefined) && (title = 'Sheipeg | Tu Tienda de Fotografía') && (subtitle = 'Catálogo de Productos')
+    const [SpinnerState, setSpinnerState] = useState({ display: 'flex' })
     const [productsState, setProductsState] = useState([])
     const [anchorEl, setAnchorEl] = useState(null);
     const [filters, setFilters] = useState([])
     const open = Boolean(anchorEl);
-
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -46,15 +40,19 @@ const FilterContainer = () => {
         const group = e.target.parentNode.parentNode.parentNode.id
         const name = e.target.name
         if (e.target.checked) {
+            let operator = ''
+            filterList.forEach((element) =>
+                (element.group == group) && (operator = element.operator))
             setFilters([...filters, {
                 property: group,
-                operator: '==',
+                operator: operator,
                 value: name
             }])
             filterDisablingControl(group, name)
         } else {
             enableFilterGroup(group)
-            setFilters([])
+            const newFilters = filters.filter((element) => group != element.property)
+            setFilters(newFilters)
         }
     }
 
@@ -67,10 +65,23 @@ const FilterContainer = () => {
     }
 
     const enableFilterGroup = (group) => {
-        filterList.map((element) =>{
+        filterList.map((element) => {
             (element.group == group) && element.groupArray.map((subElement) => subElement.disabled = false)
         })
     }
+    useEffect(() => {
+
+        if (category) {
+            const categoryFilter = {
+                property: 'category',
+                operator: '==',
+                value: category
+            }
+            setFilters([categoryFilter])
+        }
+        
+    }, [category])
+
 
     useEffect(() => {
         setProductsState([])
@@ -78,10 +89,16 @@ const FilterContainer = () => {
             .then((res) => {
                 setProductsState(res)
             })
+            .finally(() => {
+                setSpinnerState({ display: 'none' })
+            })
     }, [filters])
 
     return (
         <>
+            {category === undefined && <Carousel />}
+            <h1>{title}</h1>
+            <h2>{subtitle}</h2>
             <Button
                 onClick={handleClick}
                 variant='contained'
@@ -112,7 +129,9 @@ const FilterContainer = () => {
                         })}
                     </FormGroup>)
                 })}
+
             </Menu>
+            <LoadingSpinner display={SpinnerState} />
             <ItemList items={productsState} />
 
         </>

@@ -35,6 +35,7 @@ function App() {
             <NavBar />
             <Routes>
               <Route path='/filter' element={<FilterContainer />} />
+              <Route path='/filter/:category' element={<FilterContainer />} />
               <Route path='/item/:id' element={<ItemDetailContainer />}  />
               <Route path='/categorias/:category' element={<ItemListContainer />} />
               <Route path='/ordenes' element={<OrdersContainer />}/>
