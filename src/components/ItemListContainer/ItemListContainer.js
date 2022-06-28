@@ -27,7 +27,23 @@ const ItemListContainer = () => {
     const [productsState, setProductsState] = useState([])
     const [anchorEl, setAnchorEl] = useState(null);
     const [filters, setFilters] = useState([])
-    
+
+
+    const filterDisabled = (group, name) => {
+        let returnValue = false
+        filters.forEach((element) => {
+            (element.property == group && element.value != name) && (returnValue = true)
+        })
+        return returnValue
+    }
+    const filterChecked = (group, name) => {
+        let returnValue = false
+        filters.forEach((element) => {
+            (element.property == group && element.value == name) && (returnValue = true)
+        })
+        return returnValue
+    }
+
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -35,6 +51,7 @@ const ItemListContainer = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
     const handleFilter = (e) => {
         const group = e.target.parentNode.parentNode.parentNode.id
         const name = e.target.name
@@ -47,7 +64,7 @@ const ItemListContainer = () => {
                 operator: operator,
                 value: name
             }])
-            filterDisablingControl(group, name)
+            //filterDisablingControl(group, name)
         } else {
             enableFilterGroup(group)
             const newFilters = filters.filter((element) => group != element.property)
@@ -78,8 +95,8 @@ const ItemListContainer = () => {
             }
             setFilters([categoryFilter])
         }
-        
     }, [category])
+
     useEffect(() => {
         setProductsState([])
         filterProducts(filters)
@@ -121,8 +138,11 @@ const ItemListContainer = () => {
                     return (<FormGroup id={group.group} key={index}>
                         <p style={{ marginLeft: '5px' }}><strong>{group.groupLabel}</strong></p>
                         {group.groupArray.map((subElement, index) => {
-                            const { disabled, name, label } = subElement
-                            return (<FormControlLabel key={index} disabled={disabled} onChange={handleFilter} sx={{ marginLeft: '5px' }} control={<Checkbox />} label={label} name={name} />)
+
+                            const { name, label, checked } = subElement
+                            console.log(filterDisabled(group, name))
+                            return (<FormControlLabel key={index} onChange={handleFilter} sx={{ marginLeft: '5px' }} control={<Checkbox checked={filterChecked(group.group, name)} />} label={label} name={name} disabled={filterDisabled(group.group, name)} />)
+
                         })}
                     </FormGroup>)
                 })}
