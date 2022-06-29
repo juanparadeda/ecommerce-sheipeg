@@ -91,7 +91,7 @@ const Filter = ({setProductsState, setSpinnerState}) => {
                 aria-controls={open ? 'basic-menu' : undefined}
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
-
+                
             >
                 <FilterListIcon />
             </Button>

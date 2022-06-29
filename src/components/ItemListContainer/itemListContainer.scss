@@ -3,9 +3,6 @@
     flex-direction: row;
     position: sticky;
     top: 100px;
-    margin: 40px auto;
+    justify-content: flex-start;
     max-width: 1255px;
-    button {
-        margin-left: 20px;
-    }
 }

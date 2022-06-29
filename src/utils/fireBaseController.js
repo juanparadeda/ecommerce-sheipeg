@@ -10,11 +10,11 @@ const processProdIdfromSnapshot = (snapshot) => {
     return list
 }
 
-const getProductsFromFireStore = async () => {
-    const productSnapshot = await getDocs(collection(db, 'products'))
-    const productList = processProdIdfromSnapshot(productSnapshot)
-    return (productList);
-}
+//const getProductsFromFireStore = async () => {
+//    const productSnapshot = await getDocs(collection(db, 'products'))
+//    const productList = processProdIdfromSnapshot(productSnapshot)
+//    return (productList);
+//}
 const getProductsCategory = async (category) => {
     const q = query(collection(db, 'products'), where('category', '==', category))
     const categorySnapshot = await getDocs(q)
@@ -63,4 +63,4 @@ const updateStockinFirestore = async (order) => {
 
 
 
-export { saveOrderInFirestore, getProductsFromFireStore, getProductsCategory, getProductFromFirebase, updateStockinFirestore, filterProducts }
+export { saveOrderInFirestore, getProductsCategory, getProductFromFirebase, updateStockinFirestore, filterProducts }

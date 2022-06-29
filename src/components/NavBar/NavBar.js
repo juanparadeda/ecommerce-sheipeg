@@ -14,7 +14,6 @@ import HamburgerMenu from '../HamburgerMenu/HamburguerMenu';
 import DesktopNavButton from '../DesktopNavButton/DesktopNavButton';
 import Logo from '../Logo/Logo';
 import Brand from '../Brand/Brand';
-import UserMenu from '../UserMenu/UserMenu';
 import { CartContext } from '../../context/CartContext';
 
 const NavBar = () => {
@@ -41,7 +40,6 @@ const NavBar = () => {
             </DesktopNavButton>
           </Box>
           {(prodsInCart > 0) && (<Link to='/cart'><CartWidget /></Link>)}
-          <UserMenu />
         </Toolbar>
       </Container>
     </AppBar >
