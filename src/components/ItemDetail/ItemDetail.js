@@ -1,7 +1,6 @@
 // React imports
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 // MUI imports
 import { Container, Divider, Grid, Paper, Typography, Chip } from '@mui/material';
 import { styled } from '@mui/material/styles';

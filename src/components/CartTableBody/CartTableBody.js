@@ -34,8 +34,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 
 const CartTableBody = () => {
-    const { cart, removeItem, cartPrice, prodsInCart } = useContext(CartContext)
-    
+    const { cart, removeItem, cartPrice } = useContext(CartContext)
     return (
         <TableBody>
             {cart.map((product) => {
@@ -48,7 +47,6 @@ const CartTableBody = () => {
                             let customAlign
                             (index == 0) ? (customAlign = 'left') : (customAlign = 'right')
                             return (
-
                                 <StyledTableCell align={customAlign} key={index}>{property}</ StyledTableCell>
                             )
                         })}

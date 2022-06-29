@@ -10,18 +10,6 @@ const processProdIdfromSnapshot = (snapshot) => {
     return list
 }
 
-//const getProductsFromFireStore = async () => {
-//    const productSnapshot = await getDocs(collection(db, 'products'))
-//    const productList = processProdIdfromSnapshot(productSnapshot)
-//    return (productList);
-//}
-const getProductsCategory = async (category) => {
-    const q = query(collection(db, 'products'), where('category', '==', category))
-    const categorySnapshot = await getDocs(q)
-    const categoryList = processProdIdfromSnapshot(categorySnapshot)
-    return categoryList;
-}
-
 const filterProducts = async (filters) => {
     const queryConditions = filters.map((filter) => {
         return (where(filter.property, filter.operator, filter.value))
@@ -63,4 +51,4 @@ const updateStockinFirestore = async (order) => {
 
 
 
-export { saveOrderInFirestore, getProductsCategory, getProductFromFirebase, updateStockinFirestore, filterProducts }
+export { saveOrderInFirestore, getProductFromFirebase, updateStockinFirestore, filterProducts }

@@ -2,7 +2,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // MUI imports
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Box } from '@mui/material';
 // Site components imports
 import './App.css';
 import NavBar from './components/NavBar/NavBar.js';

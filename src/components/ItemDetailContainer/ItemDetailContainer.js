@@ -12,6 +12,7 @@ const ItemDetailContainer = () => {
     const [productState, setProductState] = useState({});
 
     useEffect(() => {
+        window.scrollTo(0, 0)
         getProductFromFirebase(id)
         .then((res) => {
             setProductState(res);

@@ -7,17 +7,14 @@ const filterList = [
             {
                 label: 'Nikon',
                 name: 'nikon',
-                //disabled: false,
             },
             {
                 label: 'Canon',
                 name: 'canon',
-                //disabled: false,
             },
             {
                 label: 'Fujifilm',
                 name: 'fuji',
-                //disabled: false,
             }
         ]
     },
@@ -29,44 +26,30 @@ const filterList = [
             {
                 label: 'Canon EF',
                 name: 'ef',
-                //disabled: false,
-                
             },
             {
                 label: 'Canon EF-S',
                 name: 'efs',
-                //disabled: false,
-                
             },
             {
                 label: 'Canon RF',
                 name: 'rf',
-                //disabled: false,
-                
             },
             {
                 label: 'Fujifilm X',
                 name: 'x',
-                //disabled: false,
-                
             },
             {
                 label: 'Nikon DX',
-                name: 'dx',
-                //disabled: false,
-                
+                name: 'dx',             
             },
             {
                 label: 'Nikon Z',
                 name: 'z',
-                //disabled: false,
-                
             },
             {
                 label: 'Nikon F',
                 name: 'f',
-                //disabled: false,
-                
             },
         ]
     }

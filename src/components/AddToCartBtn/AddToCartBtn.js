@@ -25,7 +25,7 @@ const AddToCartBtn = ({ product, count = 1, }) => {
         <>
             <Button disabled={!(stock > 0)} onClick={() => {
                 addItem(product, count, setOpen, setOpenFail);
-            }
+                }
             }
                 size="small" variant="contained">
                 <AddShoppingCartIcon />

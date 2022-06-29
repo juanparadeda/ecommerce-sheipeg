@@ -3,12 +3,12 @@ import { useState, useContext } from "react"
 // react-hook-form validation import
 import { useForm } from "react-hook-form"
 // MUI imports
-import { TextField, Button, Container, Box } from "@mui/material"
+import { TextField, Button, Box } from "@mui/material"
 // Site components imports
 import { CartContext } from "../../context/CartContext"
 import './CheckoutForm.scss'
 // Firebase imports
-import { saveOrderInFirestore, updateStockinFirestore } from "../../utils/fireBaseController"
+import { saveOrderInFirestore } from "../../utils/fireBaseController"
 
 
 const CheckoutForm = ({ setOrderSubmitted, setSpinnerState }) => {

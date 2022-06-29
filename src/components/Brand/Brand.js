@@ -12,7 +12,6 @@ const Brand = () => {
               sx={{
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },
-                fontFamily: 'monospace',
                 fontWeight: 700,
                 letterSpacing: '.3rem',
                 color: 'inherit',
@@ -20,7 +19,7 @@ const Brand = () => {
                 marginLeft: '15px'
               }}
             >
-              Sheipeg
+              SHEIPEG
             </Typography>
           </Link >
     )
