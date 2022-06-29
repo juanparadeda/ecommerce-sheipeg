@@ -15,6 +15,10 @@ const filterList = [
             {
                 label: 'Fujifilm',
                 name: 'fuji',
+            },
+            {
+                label: 'Lensbaby',
+                name: 'lensbaby',
             }
         ]
     },

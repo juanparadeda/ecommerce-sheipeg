@@ -12,7 +12,7 @@ const ItemDetailContainer = () => {
     const [productState, setProductState] = useState({});
 
     useEffect(() => {
-        window.scrollTo(0, 0)
+        window.scrollTo(0, 0) // This is useful when clicking on a compatible product from the ProductDetail page itself. Otherwise, the new product would load and you remain on the lower section of the page
         getProductFromFirebase(id)
         .then((res) => {
             setProductState(res);

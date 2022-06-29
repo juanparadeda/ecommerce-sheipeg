@@ -25,11 +25,13 @@ const ItemListContainer = () => {
         <>
             <Carousel />
             <h1>{title}</h1>
-            <Container>
-                <form className="filter">
-                    <Filter setProductsState={setProductsState} setSpinnerState={setSpinnerState} />
-                </form>
-            </Container>
+            {(category != 'accesorios') &&
+                <Container>
+                    <form className="filter">
+                        <Filter setProductsState={setProductsState} setSpinnerState={setSpinnerState} />
+                    </form>
+                </Container>
+            }
             <LoadingSpinner display={SpinnerState} />
             <ItemList items={productsState} />
         </>
