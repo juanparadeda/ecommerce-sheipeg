@@ -1,0 +1,27 @@
+.footer {
+    margin-top: auto;
+}
+
+.footerContainer {
+    display: flex;
+    justify-content: center;
+    .footerBox {
+        width: 300px;
+        color: white;
+        p {
+            text-align: inherit;
+            margin-left: 0;
+            margin-right: 0;
+
+        }
+    }
+    :nth-child(1){
+        text-align: right;
+        margin-right: 15px;
+    }
+    :nth-child(3){
+        text-align: left;
+        margin-left: 15px;
+    }
+
+}

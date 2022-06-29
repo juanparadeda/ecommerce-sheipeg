@@ -16,7 +16,7 @@ const ItemDetailContainer = () => {
         .then((res) => {
             setProductState(res);
         })
-    }, [])
+    }, [id])
     return (
         <>  
             {productState.id === undefined ? 

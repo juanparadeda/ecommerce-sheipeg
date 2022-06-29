@@ -1,6 +1,7 @@
 // React imports
 import * as React from 'react';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 // MUI imports
 import { Container, Divider, Grid, Paper, Typography, Chip } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -43,11 +44,11 @@ const ItemDetail = ({ product }) => {
             .then((res) => {
                 setCompProducts(res)
             })
-    }, [])
+    }, [product])
     return (
         <Container maxWidth='xl' className='itemDetailContainer'>
             <Paper variant="outlined" >
-                <h2>{name}</h2>
+                <h1 className='itemDetailName'>{name}</h1>
                 <Grid container spacing={2} alignItems="center" justifyContent="space-evenly" flexWrap='wrap'>
                     <Grid item xs={8}>
                         <img src={`../` + image} alt={name} />
@@ -72,11 +73,15 @@ const ItemDetail = ({ product }) => {
                         <Chip label='DESCRIPCIÓN' />
                     </Divider>
                     <Typography variant="body1" margin="20px">{description}</Typography>
-                    <Divider variant='middle'>
-                        <Chip label="PRODUCTOS COMPATIBLES" />
-                        
-                    </Divider>
-                    <ItemList items={compProducts} />
+                    {compProducts.length > 0 &&
+                        <>
+                            <Divider variant='middle'>
+                                <Chip label="PRODUCTOS COMPATIBLES" />
+
+                            </Divider>
+                            <ItemList items={compProducts} />
+                        </>
+                    }
                 </Root>
 
             </Paper>

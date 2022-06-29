@@ -6,7 +6,7 @@ import Item from '../Item/Item';
 
 const ItemList = ({ items }) => {
     return (
-            <Container>
+            <Container sx={{ mt:'30px', mb:'30px'}}>
                 <Grid container spacing={3}>
                     {
                         items.map((product) => {

@@ -2,6 +2,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // MUI imports
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Box } from '@mui/material';
 // Site components imports
 import './App.css';
 import NavBar from './components/NavBar/NavBar.js';
@@ -11,6 +12,7 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import { CartContextProvider } from './context/CartContext';
 import OrdersContainer from './components/OrdersContainer/OrdersContainer';
+import Footer from './components/Footer/Footer';
 
 const customTheme = createTheme({
   palette: {
@@ -31,15 +33,17 @@ function App() {
       <CartContextProvider>
         <ThemeProvider theme={customTheme}>
           <BrowserRouter>
-            <NavBar />
-            <Routes>
-              <Route path='/item/:id' element={<ItemDetailContainer />}  />
-              <Route path='/categorias/:category' element={<ItemListContainer />} />
-              <Route path='/ordenes' element={<OrdersContainer />}/>
-              <Route path='/cart' element={<CartContainer />} />
-              <Route path='/' element={<ItemListContainer />} />
-              <Route path='*' element={<NotFound />} />
-            </Routes>
+              <NavBar />
+
+              <Routes>
+                <Route path='/item/:id' element={<ItemDetailContainer />} />
+                <Route path='/categorias/:category' element={<ItemListContainer />} />
+                <Route path='/ordenes' element={<OrdersContainer />} />
+                <Route path='/cart' element={<CartContainer />} />
+                <Route path='/' element={<ItemListContainer />} />
+                <Route path='*' element={<NotFound />} />
+              </Routes>
+              <Footer />
           </BrowserRouter>
         </ThemeProvider>
       </CartContextProvider>
