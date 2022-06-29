@@ -90,7 +90,7 @@ const CheckoutForm = ({ setOrderSubmitted, setSpinnerState }) => {
                     onChange={formInput}
                 />
                 {errors.phone?.type == 'required' && <small>El campo es requerido</small>}
-                {errors.phone?.type == 'minLength' && <small>Ingresar número completo, incluyendo código de área. Código de área para CABA: 5411</small>}
+                {errors.phone?.type == 'minLength' && <small>Ingresar número completo, sin guiones ni paréntesis</small>}
                 {errors.phone?.type == 'pattern' && <small>Ingresar sólo números</small>}
             </Box>
             <Button type='submit' variant='contained' size='large' color='secondary'>FINALIZAR COMPRA</Button>

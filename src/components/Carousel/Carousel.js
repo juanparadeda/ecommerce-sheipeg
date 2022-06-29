@@ -32,15 +32,23 @@ const Carousel = () => {
           className="parallax-bg"
 
           data-swiper-parallax="-15%"
-        ></div>
+        >
+          
+        </div>
+        
         <SwiperSlide>
           <div className="title" data-swiper-parallax="-300">
-            Las mejores marcas
+            SHEIPEG
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="title" data-swiper-parallax="-300">
-            Envíos en 24hs
+            Tu Tienda de Fotografía
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="title" data-swiper-parallax="-300">
+            Las Mejores Marcas
           </div>
         </SwiperSlide>
         <SwiperSlide>
