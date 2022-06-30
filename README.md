@@ -3,6 +3,8 @@
 This is a project for the React.js training I'm taking in Coderhouse : https://www.coderhouse.com/
 The purpose of the training is to apply the previously acquired knowledge of HTML, CSS, SASS, Vanilla JS, plus the concepts learned in this React.js training, to build the Front End of an eCommerce store. 
 
+A .gif file was included, showing the overall site experience. It is at the home directory of this project: `/ecommerce-sheipeg.gif`
+
 ## Required dependancies to be installed
 
 You will need node.js installed locally to be able to install further dependancies. You can download node.js for your OS from this website: https://nodejs.org/en/
