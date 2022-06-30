@@ -23,7 +23,7 @@ const CartContextProvider = ({ children }) => {
             localStorage.setItem('cart', JSON.stringify([...cart, productInCart]))
             setProdsInCart(prodsInCart + qty)
             setOpen(true)
-        } else if (product.stock > (productInCart.amountInCart + qty)) {
+        } else if (product.stock >= (productInCart.amountInCart + qty)) {
             productInCart.amountInCart += qty;
             localStorage.setItem('cart', JSON.stringify(cart))
             setProdsInCart(prodsInCart + qty)

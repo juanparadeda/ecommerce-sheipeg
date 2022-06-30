@@ -3,9 +3,27 @@
 This is a project for the React.js training I'm taking in Coderhouse : https://www.coderhouse.com/
 The purpose of the training is to apply the previously acquired knowledge of HTML, CSS, SASS, Vanilla JS, plus the concepts learned in this React.js training, to build the Front End of an eCommerce store. 
 
+This project emulates a photography store. The home page shows the entire catalog stored in Firebase. Clicking on the filter button, allows you to filter by brand, or mount type.  Keep in mind that, although all photography lenses have one mount type, many cameras (particularly APS-C sensor cameras) are compatible with 2 mount types. Also, there are lenses manufacturers who produce lenses for the main camera brands. So you have Sigma and Lensbaby lenses which may be compatible with Nikon or Canon mount types.
+
+When you navigate to a category page, you'll only see products from that category. The category pages have the filters available which will apply with an AND logical operator on top of the category filter. The page `/accesorios` is the only page in which the filter button is not available. Camera accesories have a ton of classifications and at this time doing that was an effort beyond scope.
+
+You can navigate to specific products and see a big image of the product, the add to cart small box, a description, and a compatible products section at the bottom. This compatible products section works for cameras and lenses. Lenses would show cameras which support the mount type of the lens. Cameras would show lenses which have one of the supported mount types of the camera.
+
+You can add products to cart. If a product has 6 items in stock. You can add all 6 to the cart. But the stock will not be updated at this point. However, the function will prevent you from adding more of those to the cart.
+
+Once you're ready for checkout, you can browse to the cart page clicking in the cart icon or in the button after adding the product to cart. You can remove products from cart, empty the cart, or proceed with emulated payment. 
+
+Once you emulate payment, provide your data, your data passes basic validation, and you submit your order, then the stock will be updated for the products in Firebase. If a product runs out of stock, then the add to cart button will be disabled.
+
+After you confirmed your order, the page will take you to the `/ordenes` page which will show you ALL submitted orders in Firebase. Of course in a real project this would have to be filtered so you can only see orders belonging to your user, but having users authenticated is also out of scope here
+
+
+
 A .gif file was included, showing the overall site experience. It is at the home directory of this project: `/ecommerce-sheipeg.gif`
 
 ![GIF ANIMATION](/ecommerce-sheipeg.gif)
+
+
 
 
 
