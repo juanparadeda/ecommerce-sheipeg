@@ -19,6 +19,10 @@ const filterList = [
             {
                 label: 'Lensbaby',
                 name: 'lensbaby',
+            },
+            {
+                label: 'Sigma',
+                name: 'sigma',
             }
         ]
     },

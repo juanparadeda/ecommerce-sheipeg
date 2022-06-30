@@ -20,18 +20,20 @@ const ItemListContainer = () => {
     (category === undefined) && (title = 'Catálogo de Productos')
     const [SpinnerState, setSpinnerState] = useState({ display: 'flex' })
     const [productsState, setProductsState] = useState([])
-
+    const showFilter = { display: 'unset'}
+    category == 'accesorios' && (showFilter.display = 'none')
     return (
+        
         <>
             <Carousel />
             <h1>{title}</h1>
-            {(category != 'accesorios') &&
-                <Container>
+  
+                <Container sx={showFilter}>
                     <form className="filter">
                         <Filter setProductsState={setProductsState} setSpinnerState={setSpinnerState} />
                     </form>
                 </Container>
-            }
+            
             <LoadingSpinner display={SpinnerState} />
             <ItemList items={productsState} />
         </>

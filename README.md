@@ -19,6 +19,8 @@ This project uses Material UI component library. To install this library, type `
 
 This project uses react-hook-form for data input validation. To install this dependancy with npm: `npm install react-hook-form`.
 
+This project uses swiper.js for the carousel banner. To install this dependancy with npm: `npm install swiper`.
+
 
 # Getting Started with Create React App
 
