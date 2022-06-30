@@ -5,6 +5,8 @@ The purpose of the training is to apply the previously acquired knowledge of HTM
 
 This project emulates a photography store. The home page shows the entire catalog stored in Firebase. Clicking on the filter button, allows you to filter by brand, or mount type.  Keep in mind that, although all photography lenses have one mount type, many cameras (particularly APS-C sensor cameras) are compatible with 2 mount types. Also, there are lenses manufacturers who produce lenses for the main camera brands. So you have Sigma and Lensbaby lenses which may be compatible with Nikon or Canon mount types.
 
+Filters are dynamic. You can add/remove filters by editing the `/utils/filterList.js` file
+
 When you navigate to a category page, you'll only see products from that category. The category pages have the filters available which will apply with an AND logical operator on top of the category filter. The page `/accesorios` is the only page in which the filter button is not available. Camera accesories have a ton of classifications and at this time doing that was an effort beyond scope.
 
 You can navigate to specific products and see a big image of the product, the add to cart small box, a description, and a compatible products section at the bottom. This compatible products section works for cameras and lenses. Lenses would show cameras which support the mount type of the lens. Cameras would show lenses which have one of the supported mount types of the camera.
