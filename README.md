@@ -5,6 +5,10 @@ The purpose of the training is to apply the previously acquired knowledge of HTM
 
 A .gif file was included, showing the overall site experience. It is at the home directory of this project: `/ecommerce-sheipeg.gif`
 
+![GIF ANIMATION](/ecommerce-sheipeg.gif)
+
+
+
 ## Required dependancies to be installed
 
 You will need node.js installed locally to be able to install further dependancies. You can download node.js for your OS from this website: https://nodejs.org/en/
